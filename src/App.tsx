@@ -15,11 +15,10 @@ function App() {
   
   const[memos,setMemos] = useState<Memo[]>([]);
   console.log(memos)
-
   return (
     <>
       <Header/>
-      <main className="p-8 p-3 w-full space-y-8 min-h-screen">
+      <main className="p-3 w-full space-y-8 min-h-screen">
         <div >
           <InputArea setMemos={setMemos} />
           <MemoList memos={memos} />

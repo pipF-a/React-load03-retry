@@ -1,11 +1,7 @@
 import React, { useState } from 'react'
 import { AddButton } from '../Button/AddButton'
+import type { Memo } from '../../types';
 
-type Memo = {
-  id: number;
-  text: string;
-  createdAt: string;
-}
 
 type Props = {
   setMemos: React.Dispatch<React.SetStateAction<Memo[]>>;
@@ -19,13 +15,17 @@ export const InputArea = ({setMemos}:Props) => {
     setHandleChangeText(e.target.value);
   }
 
+  const now = new Date();
+
+  const formattedDateTime = `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()} ${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+
   const handleAddMemo = () => {
     if(!handleChangeText.trim()) return;
 
     const newMemo:Memo ={
       id: Date.now(),
       text: handleChangeText,
-      createdAt: new Date().toISOString(),
+      createdAt: formattedDateTime,
     }
 
     setMemos((prevMemo) => [...prevMemo,newMemo])
