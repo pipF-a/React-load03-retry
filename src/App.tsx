@@ -2,25 +2,21 @@
 import { useState } from 'react';
 import './App.css'
 import { Header } from './components/Header/Header'
-import { InputArea } from './components/InputArea/InputArea'
+import { InputMemoArea } from './components/InputMemoArea/InputMemoArea'
 import { MemoList } from './components/MemoList/MemoList';
+import type { Post } from './types';
 
 function App() {
 
-  type Memo = {
-    id:number;
-    text:string;
-    createdAt:string;
-  }
   
-  const[memos,setMemos] = useState<Memo[]>([]);
-  console.log(memos)
+  const[memos,setMemos] = useState<Post[]>([]);
+  const[reply,setReply] = useState<Post[]>([]);
   return (
     <>
       <Header/>
       <main className="p-3 w-full space-y-8 min-h-screen">
         <div >
-          <InputArea setMemos={setMemos} />
+          <InputMemoArea setMemos={setMemos} />
           <MemoList memos={memos} />
         </div>
       </main>

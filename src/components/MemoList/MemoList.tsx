@@ -2,12 +2,13 @@ import { GoPencil } from "react-icons/go";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaRegComment } from "react-icons/fa";
 
-import type { Memo } from "../../types";
+import type { Post } from "../../types";
+import { Reply } from "../Reply/Reply";
 
 
 //受け取るPropsが増えた時用にinterfaceで定義
 interface MemoListProps {
-  memos: Memo[];
+  memos: Post[];
 }
 
 //childrenに対しても自動で型定義できるReact.FC
@@ -42,6 +43,7 @@ export const MemoList: React.FC<MemoListProps> = ({ memos }) => {
             <hr className="border-gray-300 mt-4" />
             <button className="mt-4 text-emerald-600 hover:text-emerald-700"><FaRegComment /></button>
           </div>
+          <Reply/>
         </li>
       ))}
     </ul>

@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { AddButton } from '../Button/AddButton'
-import type { Memo } from '../../types';
+import type { Post } from '../../types';
 
 
 type Props = {
-  setMemos: React.Dispatch<React.SetStateAction<Memo[]>>;
+  setMemos: React.Dispatch<React.SetStateAction<Post[]>>;
 }
 
-export const InputArea = ({setMemos}:Props) => {
+export const InputMemoArea = ({setMemos}:Props) => {
 
   const[handleChangeText,setHandleChangeText] = useState<string>('');
 
@@ -22,7 +22,7 @@ export const InputArea = ({setMemos}:Props) => {
   const handleAddMemo = () => {
     if(!handleChangeText.trim()) return;
 
-    const newMemo:Memo ={
+    const newMemo:Post ={
       id: Date.now(),
       text: handleChangeText,
       createdAt: formattedDateTime,
