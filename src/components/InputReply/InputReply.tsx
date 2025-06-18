@@ -1,46 +1,46 @@
-import { AddButton } from '../Button/AddButton'
 import type { Post } from '../../types';
+import { AddButton } from '../Button/AddButton';
 
 
 interface Props  {
+  replys: Post[];
+  setReplys: React.Dispatch<React.SetStateAction<Post[]>>;
   handleChangeText: string;
-  setMemos: React.Dispatch<React.SetStateAction<Post[]>>;
-  setHandleChangeText: React.Dispatch<React.SetStateAction<string>>;
+  setHandleChangeText: (value: string) => void;
 }
+export const InputReply = ({setReplys,handleChangeText,setHandleChangeText}:Props) => {
 
-export const InputMemoArea = ({handleChangeText, setMemos, setHandleChangeText}:Props) => {
 
-
-  const changeText = (e: { target: { value: React.SetStateAction<string>; }; }) =>{
+  const changeReplyText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setHandleChangeText(e.target.value);
   }
 
   const now = new Date();
 
   const formattedDateTime = `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()} ${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
-  const handleAddMemo = () => {
-    if(!handleChangeText.trim()) return;
 
-    const newMemo:Post ={
+  const handleAddReply = () => {
+    if(!handleChangeText?.trim()) return;
+
+    const newReply:Post ={
       id: Date.now(),
       text: handleChangeText,
       createdAt: formattedDateTime,
     }
 
-    setMemos((prevMemo) => [...prevMemo,newMemo])
+    setReplys((prevReply) => [...prevReply,newReply])
     setHandleChangeText('');
   }
-
   return (
     <>
       <textarea 
         placeholder="新しいメモを入力.." 
         className="max-w-lg w-full rounded-lg p-4 shadow-lg bg-white" 
         rows={4}
-        onChange={changeText}
+        onChange={changeReplyText}
         value={handleChangeText}
       />
-      <AddButton onClick={handleAddMemo}/>
+      <AddButton onClick={handleAddReply} />
     </>
   )
 }

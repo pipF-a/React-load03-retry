@@ -3,16 +3,22 @@ import { MdDeleteOutline } from "react-icons/md";
 import { FaRegComment } from "react-icons/fa";
 
 import type { Post } from "../../types";
-import { Reply } from "../Reply/Reply";
+import { ReplyList } from "../ReplyList/ReplyList";
+import { InputReply } from "../InputReply/InputReply";
 
 
 //受け取るPropsが増えた時用にinterfaceで定義
 interface MemoListProps {
   memos: Post[];
+  replys: Post[];
+  handleChangeText: string;
+  setReplys: React.Dispatch<React.SetStateAction<Post[]>>;
+  setMemos: React.Dispatch<React.SetStateAction<Post[]>>;
+  setHandleChangeText: (value: string) => void;
 }
 
 //childrenに対しても自動で型定義できるReact.FC
-export const MemoList: React.FC<MemoListProps> = ({ memos }) => {
+export const MemoList: React.FC<MemoListProps> = ({ memos,replys,setReplys,handleChangeText,setHandleChangeText}) => {
   return (
     <ul className="mt-8 max-w-lg">
         <li className="border border-gray-300 shadow bg-white rounded-lg p-4" >
@@ -43,7 +49,8 @@ export const MemoList: React.FC<MemoListProps> = ({ memos }) => {
             <hr className="border-gray-300 mt-4" />
             <button className="mt-4 text-emerald-600 hover:text-emerald-700"><FaRegComment /></button>
           </div>
-          <Reply/>
+          <InputReply replys={replys} setReplys={setReplys} handleChangeText={handleChangeText} setHandleChangeText={setHandleChangeText}/>
+          <ReplyList replys={replys}/>
         </li>
       ))}
     </ul>
