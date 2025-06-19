@@ -16,6 +16,14 @@ function App() {
   //アクティブ入力格納用ステート
   const[handleChangeReplyText,setHandleChangeReplyText] = useState<string>('');
 
+  // テキストエリアの表示状態用のステート
+  const [apperReplyInput,setApperReplyInput] = useState(false);
+
+
+  const toggleApper = () => {
+    setApperReplyInput(prev => !prev);
+  }
+
   return (
     <>
       <Header/>
@@ -29,6 +37,9 @@ function App() {
             handleChangeReplyText={handleChangeReplyText}
             setHandleChangeReplyText={setHandleChangeReplyText}
             setMemos={setMemos}
+            apperReplyInput={apperReplyInput}
+            // setApperReplyInput={setApperReplyInput}
+            toggleApper={toggleApper}
           />
         </div>
       </main>

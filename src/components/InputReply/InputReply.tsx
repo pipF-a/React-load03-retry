@@ -7,8 +7,9 @@ interface Props  {
   setReplys: React.Dispatch<React.SetStateAction<Post[]>>;
   handleChangeReplyText: string;
   setHandleChangeReplyText: (value: string) => void;
+  toggleApper: () => void;
 }
-export const InputReply = ({setReplys,handleChangeReplyText,setHandleChangeReplyText}:Props) => {
+export const InputReply = ({setReplys,handleChangeReplyText,setHandleChangeReplyText,toggleApper}:Props) => {
 
 
   const changeReplyText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -35,12 +36,12 @@ export const InputReply = ({setReplys,handleChangeReplyText,setHandleChangeReply
     <>
       <textarea 
         placeholder="新しいメモを入力.." 
-        className="max-w-lg w-full rounded-lg p-4 shadow-lg bg-white" 
+        className="block mt-4 max-w-lg w-md ml-auto rounded-lg p-4 shadow-lg bg-white" 
         rows={4}
         onChange={changeReplyText}
         value={handleChangeReplyText}
       />
-      <AddButton onClick={handleAddReply} />
+      <AddButton onClick={() => { handleAddReply(); toggleApper(); }} />
     </>
   )
 }

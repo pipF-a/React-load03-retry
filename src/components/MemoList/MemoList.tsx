@@ -7,18 +7,23 @@ import { ReplyList } from "../ReplyList/ReplyList";
 import { InputReply } from "../InputReply/InputReply";
 
 
+
 //受け取るPropsが増えた時用にinterfaceで定義
 interface MemoListProps {
   memos: Post[];
   replys: Post[];
   handleChangeReplyText: string;
+  apperReplyInput:boolean;
+  toggleApper: () => void;
   setReplys: React.Dispatch<React.SetStateAction<Post[]>>;
   setMemos: React.Dispatch<React.SetStateAction<Post[]>>;
   setHandleChangeReplyText: (value: string) => void;
 }
 
+
 //childrenに対しても自動で型定義できるReact.FC
-export const MemoList: React.FC<MemoListProps> = ({ memos,replys,setReplys,handleChangeReplyText,setHandleChangeReplyText}) => {
+export const MemoList: React.FC<MemoListProps> = ({ memos,replys,setReplys,handleChangeReplyText,setHandleChangeReplyText,apperReplyInput,toggleApper}) => {
+
   return (
     <ul className="mt-8 max-w-lg">
         <li className="border border-gray-300 shadow bg-white rounded-lg p-4" >
@@ -47,10 +52,10 @@ export const MemoList: React.FC<MemoListProps> = ({ memos,replys,setReplys,handl
           <div className="mt-4">
             <p className="whitespace-pre-wrap text-gray-700">{memo.text}</p>
             <hr className="border-gray-300 mt-4" />
-            <button className="mt-4 text-emerald-600 hover:text-emerald-700"><FaRegComment /></button>
           </div>
-          <InputReply replys={replys} setReplys={setReplys} handleChangeReplyText={handleChangeReplyText} setHandleChangeReplyText={setHandleChangeReplyText}/>
-          <ReplyList replys={replys}/>
+          <ReplyList replys={replys} />
+          {apperReplyInput ? <InputReply replys={replys} setReplys={setReplys} handleChangeReplyText={handleChangeReplyText} setHandleChangeReplyText={setHandleChangeReplyText} toggleApper={toggleApper}/> : ''}
+          {apperReplyInput ? '' : <button className=" text-emerald-600 hover:text-emerald-700 mt-4" onClick={toggleApper}><FaRegComment /></button>}
         </li>
       ))}
     </ul>
