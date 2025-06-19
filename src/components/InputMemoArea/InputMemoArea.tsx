@@ -3,32 +3,32 @@ import type { Post } from '../../types';
 
 
 interface Props  {
-  handleChangeText: string;
+  handleChangeMemoText: string;
   setMemos: React.Dispatch<React.SetStateAction<Post[]>>;
-  setHandleChangeText: React.Dispatch<React.SetStateAction<string>>;
+  setHandleChangeMemoText: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const InputMemoArea = ({handleChangeText, setMemos, setHandleChangeText}:Props) => {
+export const InputMemoArea = ({handleChangeMemoText, setMemos, setHandleChangeMemoText}:Props) => {
 
 
   const changeText = (e: { target: { value: React.SetStateAction<string>; }; }) =>{
-    setHandleChangeText(e.target.value);
+    setHandleChangeMemoText(e.target.value);
   }
 
   const now = new Date();
 
   const formattedDateTime = `${now.getFullYear()}/${now.getMonth() + 1}/${now.getDate()} ${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
   const handleAddMemo = () => {
-    if(!handleChangeText.trim()) return;
+    if(!handleChangeMemoText.trim()) return;
 
     const newMemo:Post ={
       id: Date.now(),
-      text: handleChangeText,
+      text: handleChangeMemoText,
       createdAt: formattedDateTime,
     }
 
     setMemos((prevMemo) => [...prevMemo,newMemo])
-    setHandleChangeText('');
+    setHandleChangeMemoText('');
   }
 
   return (
@@ -38,7 +38,7 @@ export const InputMemoArea = ({handleChangeText, setMemos, setHandleChangeText}:
         className="max-w-lg w-full rounded-lg p-4 shadow-lg bg-white" 
         rows={4}
         onChange={changeText}
-        value={handleChangeText}
+        value={handleChangeMemoText}
       />
       <AddButton onClick={handleAddMemo}/>
     </>

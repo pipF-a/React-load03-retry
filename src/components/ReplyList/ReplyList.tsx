@@ -9,9 +9,8 @@ export const ReplyList: React.FC<ReplyListProps> = ({ replys}) => {
   return (
     <ul>
       {replys.map(reply =>(
-        <li>{reply.text}</li>
+        <li key={reply.id}>{reply.text}</li>
       ))}
-      
     </ul>
   )
 }

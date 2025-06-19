@@ -11,14 +11,14 @@ import { InputReply } from "../InputReply/InputReply";
 interface MemoListProps {
   memos: Post[];
   replys: Post[];
-  handleChangeText: string;
+  handleChangeReplyText: string;
   setReplys: React.Dispatch<React.SetStateAction<Post[]>>;
   setMemos: React.Dispatch<React.SetStateAction<Post[]>>;
-  setHandleChangeText: (value: string) => void;
+  setHandleChangeReplyText: (value: string) => void;
 }
 
 //childrenに対しても自動で型定義できるReact.FC
-export const MemoList: React.FC<MemoListProps> = ({ memos,replys,setReplys,handleChangeText,setHandleChangeText}) => {
+export const MemoList: React.FC<MemoListProps> = ({ memos,replys,setReplys,handleChangeReplyText,setHandleChangeReplyText}) => {
   return (
     <ul className="mt-8 max-w-lg">
         <li className="border border-gray-300 shadow bg-white rounded-lg p-4" >
@@ -49,7 +49,7 @@ export const MemoList: React.FC<MemoListProps> = ({ memos,replys,setReplys,handl
             <hr className="border-gray-300 mt-4" />
             <button className="mt-4 text-emerald-600 hover:text-emerald-700"><FaRegComment /></button>
           </div>
-          <InputReply replys={replys} setReplys={setReplys} handleChangeText={handleChangeText} setHandleChangeText={setHandleChangeText}/>
+          <InputReply replys={replys} setReplys={setReplys} handleChangeReplyText={handleChangeReplyText} setHandleChangeReplyText={setHandleChangeReplyText}/>
           <ReplyList replys={replys}/>
         </li>
       ))}
