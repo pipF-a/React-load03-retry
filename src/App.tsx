@@ -26,8 +26,6 @@ function App() {
             memos={memos} 
             replys={replys} 
             setReplys={setReplys} 
-            handleChangeMemoText={handleChangeMemoText}
-            setHandleChangeMemoText={setHandleChangeMemoText}
             handleChangeReplyText={handleChangeReplyText}
             setHandleChangeReplyText={setHandleChangeReplyText}
             setMemos={setMemos}
