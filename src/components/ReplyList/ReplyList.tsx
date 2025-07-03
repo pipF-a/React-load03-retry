@@ -8,11 +8,11 @@ interface ReplyListProps {
   replys: Post[];
 }
 
-export const ReplyList: React.FC<ReplyListProps> = ({ replys}) => {
+export const ReplyList: React.FC<ReplyListProps> = ({replys}) => {
   return (
     <ul>
       {replys.map(reply =>(
-        <li key={reply.id} className='w-md mt-3 p-3 ml-auto bg-gray-100 rounded-lg space-y-2'>
+        <li key={reply.id} className='sm:w-md w-auto mt-3 p-3 ml-auto bg-gray-100 rounded-lg space-y-2'>
           <div className="flex items-center justify-between">
             <p className="text-sm text-gray-500">{reply.createdAt}</p>
             <div>

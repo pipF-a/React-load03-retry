@@ -36,7 +36,7 @@ export const InputReply = ({setReplys,handleChangeReplyText,setHandleChangeReply
     <>
       <textarea 
         placeholder="新しいメモを入力.." 
-        className="block mt-4 max-w-lg w-md ml-auto rounded-lg p-4 shadow-lg bg-white" 
+        className="sm:w-md w-full block mt-4 max-w-lg  ml-auto rounded-lg p-4 shadow-lg bg-white " 
         rows={4}
         onChange={changeReplyText}
         value={handleChangeReplyText}

@@ -32,7 +32,7 @@ function App() {
   return (
     <>
       <Header/>
-      <main className="p-3 w-full space-y-8 min-h-screen">
+      <main className="max-w-4xl mx-auto p-3 space-y-8 min-h-screen">
         <div >
           <InputMemoArea setMemos={setMemos} handleChangeMemoText={handleChangeMemoText} setHandleChangeMemoText={setHandleChangeMemoText} />
           <MemoList 
