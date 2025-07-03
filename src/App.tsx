@@ -19,10 +19,15 @@ function App() {
   // テキストエリアの表示状態用のステート
   const [apperReplyInput,setApperReplyInput] = useState(false);
 
-
+  //reply用のテキスト欄の出現
   const toggleApper = () => {
     setApperReplyInput(prev => !prev);
   }
+
+  //投稿を削除
+  const handleDeleteMemo = (id: number) => {
+    setMemos((prevMemos) => prevMemos.filter((memo) => memo.id !== id));
+  };
 
   return (
     <>
@@ -38,8 +43,8 @@ function App() {
             setHandleChangeReplyText={setHandleChangeReplyText}
             setMemos={setMemos}
             apperReplyInput={apperReplyInput}
-            // setApperReplyInput={setApperReplyInput}
             toggleApper={toggleApper}
+            handleDeleteMemo={handleDeleteMemo}
           />
         </div>
       </main>
